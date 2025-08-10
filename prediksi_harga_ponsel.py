@@ -15,11 +15,17 @@ print(df.isnull().sum())
 # Hapus baris dengan missing values (jika ada)
 df = df.dropna()
 
+print("\n=== Jumlah Data ===")
+print("Jumlah data:", df.shape[0])
+#print(df.tail())
+
 print("\n=== Cek duplikat ===")
 print("Jumlah duplikat:", df.duplicated().sum())
 
 # Hapus duplikat
 df = df.drop_duplicates()
+print("\n=== Info dataset ===")
+print("Jumlah baris setelah dihapus:", df.shape[0])
 
 print("\n=== Info tipe data ===")
 print(df.dtypes)
