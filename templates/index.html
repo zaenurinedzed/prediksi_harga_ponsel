@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prediksi Harga Ponsel</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f7f8;
+        color: #333;
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+
+      form .form-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      form label {
+        font-weight: 600;
+        color: #34495e;
+        width: 45%;
+        margin: 0;
+      }
+
+      form input[type="number"] {
+        width: 55%;
+        padding: 8px 10px;
+        border: 1.5px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      form input[type="number"]:focus {
+        border-color: #2980b9;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        background-color: #2980b9;
+        color: white;
+        font-size: 18px;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: 700;
+      }
+
+      button:hover {
+        background-color: #1c5980;
+      }
+
+      h2 {
+        margin-top: 30px;
+        text-align: center;
+        color: #27ae60;
+        font-weight: 700;
+      }
+
+      /* Styling blok Data Input */
+      div.input-data-container {
+        margin-top: 30px;
+        padding: 20px 25px;
+        background-color: #eaf4fc;
+        border-radius: 8px;
+        box-shadow: inset 0 0 8px rgba(41, 128, 185, 0.1);
+      }
+
+      div.input-data-container h3 {
+        margin-top: 0;
+        color: #2980b9;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      div.input-data-container ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      div.input-data-container ul li {
+        padding: 8px 0;
+        border-bottom: 1px solid #cfd8e3;
+        font-size: 1rem;
+        color: #2c3e50;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      div.input-data-container ul li:last-child {
+        border-bottom: none;
+      }
+
+      div.input-data-container ul li strong {
+        font-weight: 600;
+      }
+
+      /* Responsive font size for smaller screens */
+      @media (max-width: 400px) {
+        form .form-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        form label,
+        form input[type="number"] {
+          width: 100%;
+        }
+
+        form input[type="number"],
+        button {
+          font-size: 14px;
+          padding: 10px 8px;
+        }
+
+        div.input-data-container ul li {
+          font-size: 0.9rem;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        div.input-data-container ul li strong {
+          margin-bottom: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prediksi Harga Ponsel</h1>
+    <form method="POST">
+      <div class="form-row">
+        <label for="battery_power">Battery Power (mAh):</label>
+        <input type="number" id="battery_power" name="battery_power" required />
+      </div>
+
+      <div class="form-row">
+        <label for="blue">Bluetooth (0=tidak, 1=ya):</label>
+        <input type="number" id="blue" name="blue" min="0" max="1" required />
+      </div>
+
+      <div class="form-row">
+        <label for="clock_speed">Clock Speed (GHz):</label>
+        <input type="number" step="0.1" id="clock_speed" name="clock_speed" required />
+      </div>
+
+      <div class="form-row">
+        <label for="dual_sim">Dual SIM (0=tidak, 1=ya):</label>
+        <input type="number" id="dual_sim" name="dual_sim" min="0" max="1" required />
+      </div>
+
+      <div class="form-row">
+        <label for="fc">Front Camera (MP):</label>
+        <input type="number" id="fc" name="fc" required />
+      </div>
+
+      <div class="form-row">
+        <label for="pc">Back Camera (MP):</label>
+        <input type="number" id="pc" name="pc" required />
+      </div>
+
+      <div class="form-row">
+        <label for="ram">RAM (MB):</label>
+        <input type="number" id="ram" name="ram" required />
+      </div>
+
+      <button type="submit">Prediksi Harga</button>
+    </form>
+
+    {% if input_data %}
+    <div class="input-data-container">
+      <h3>Data Input:</h3>
+      <ul>
+        <li><strong>Battery Power:</strong> <span>{{ input_data.battery_power }} mAh</span></li>
+        <li><strong>Bluetooth:</strong> <span>{{ input_data.blue }}</span></li>
+        <li><strong>Clock Speed:</strong> <span>{{ input_data.clock_speed }} GHz</span></li>
+        <li><strong>Dual SIM:</strong> <span>{{ input_data.dual_sim }}</span></li>
+        <li><strong>Front Camera:</strong> <span>{{ input_data.fc }} MP</span></li>
+        <li><strong>Back Camera:</strong> <span>{{ input_data.pc }} MP</span></li>
+        <li><strong>RAM:</strong> <span>{{ input_data.ram }} MB</span></li>
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if prediction %}
+    <h2>Hasil Prediksi: {{ prediction }}</h2>
+    {% endif %}
+  </body>
+</html>
