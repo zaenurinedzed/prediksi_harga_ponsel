@@ -5,6 +5,7 @@ from sklearn.metrics import classification_report, accuracy_score, confusion_mat
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#data preprocessing
 # Load dataset
 df = pd.read_csv("phone_price_dataset.csv")
 
